@@ -14,4 +14,9 @@ Route::group(['middleware' => ['jwt.auth']], function() {
         return response()->json(['foo'=>'bar']);
     });
 
+    Route::resource('/producto', 'ProductoController')->except([
+        'create', 'edit'
+    ]);
+
+    Route::get('/categorias/select', 'CategoriaController@select');
 });
